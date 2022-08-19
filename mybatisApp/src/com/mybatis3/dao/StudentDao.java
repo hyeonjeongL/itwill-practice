@@ -34,6 +34,7 @@ public class StudentDao {
 	public Student findStudentById(Integer studId) {
 		SqlSession sqlSession = sqlSessionFactory.openSession(false);
 		Student student = sqlSession.selectOne(NAMESPACE + "findStudentById", studId);
+		sqlSession.commit();
 		sqlSession.close();
 		return student;
 	}
