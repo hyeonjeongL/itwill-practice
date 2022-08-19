@@ -126,7 +126,7 @@ public class StudentDao {
 		int rowCount = sqlSession.update(NAMESPACE+"updateStudentById",updateStudent);
 		sqlSession.commit();
 		sqlSession.close();
-		return rowCount;
+		return rowCount; 
 	}
 
 	/**************************************************
