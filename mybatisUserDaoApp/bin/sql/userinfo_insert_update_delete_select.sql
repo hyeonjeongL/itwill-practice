@@ -1,11 +1,10 @@
-
-insert into userinfo(userid,password,name,email) values('guard1','1111','ê¹€ê²½í˜¸1','guard1@korea.com');
-insert into userinfo(userid,password,name,email) values('guard2','2222','ê¹€ê²½í˜¸2','guard2@korea.com');
-insert into userinfo(userid,password,name,email) values('guard3','3333','ê¹€ê²½í˜¸3','guard3@korea.com');
+insert into userinfo(userid,password,name,email) values('guard1','1111','±è°æÈ£1','guard1@korea.com');
+insert into userinfo(userid,password,name,email) values('guard2','2222','±è°æÈ£2','guard2@korea.com');
+insert into userinfo(userid,password,name,email) values('guard3','3333','±è°æÈ£3','guard3@korea.com');
 
 --pk update
 update  userinfo 
-set password='1111',name='ì´ë¦„ë³€ê²½',email='change@naver.com' 
+set password='1111',name='ÀÌ¸§º¯°æ',email='change@naver.com' 
 where userid='guard1';
 --pk delete
 delete userinfo where userid='guard1';

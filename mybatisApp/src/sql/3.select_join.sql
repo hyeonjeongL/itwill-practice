@@ -44,8 +44,10 @@ select stud_id, name, email,phone, a.addr_id, street, city, state, zip, country
       where s.stud_id=1;
  
 --findStudentByIdWithCourses 
+
+select * from students s join course_enrollment ce on s.stud_id=ce.stud_id;
 /*
-students + courses  join
+students + COURSE_ENROLLMENT + courses  join
 */     
 select s.*,c.* 
 		from students s 
@@ -128,7 +130,7 @@ where t.tutor_id=1;
 
       
       
--- Coursesê²€ìƒ‰      
+-- Coursesê²??ƒ‰      
 SELECT * FROM COURSES
 WHERE TUTOR_ID = 1
 AND NAME LIKE '%Quick%'
