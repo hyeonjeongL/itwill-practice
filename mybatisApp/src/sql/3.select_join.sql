@@ -45,7 +45,7 @@ select stud_id, name, email,phone, a.addr_id, street, city, state, zip, country
  
 --findStudentByIdWithCourses 
 
-select * from students s join course_enrollment ce on s.stud_id=ce.stud_id;
+select * from students s join course_enrollment ce on s.stud_id=ce.stud_id where s.stud_id=1;
 /*
 students + COURSE_ENROLLMENT + courses  join
 */     
