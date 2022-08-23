@@ -65,19 +65,45 @@ public class GuestDaoImpl implements GuestDao {
 	@Override
 	public int insertGuest(Guest guest)throws Exception {
 		System.out.println("#### GuestDaoImpl : insertGuest(Guest guest) 호출");
-		return 0;
+		Connection con = dataSource.getConnection();
+		PreparedStatement pstmt=con.prepareStatement(GuestSQL.GUEST_INSERT);
+		pstmt.setString(1, guest.getGuest_name());
+		pstmt.setString(2, guest.getGuest_email());
+		pstmt.setString(3, guest.getGuest_homepage());
+		pstmt.setString(4, guest.getGuest_title());
+		pstmt.setString(5, guest.getGuest_content());
+		int rowCount=pstmt.executeUpdate();
+		con.close();
+		
+		return rowCount;
 		
 	}
 	@Override
 	public int updateGuest(Guest guest)throws Exception {
 		System.out.println("#### GuestDaoImpl : updateGuest(Guest guest) 호출");
-		return 0;
+		Connection con = dataSource.getConnection();
+		PreparedStatement pstmt=con.prepareStatement(GuestSQL.GUEST_UPDATE);
+		pstmt.setString(1, guest.getGuest_name());
+		pstmt.setString(2, guest.getGuest_email());
+		pstmt.setString(3, guest.getGuest_homepage());
+		pstmt.setString(4, guest.getGuest_title());
+		pstmt.setString(5, guest.getGuest_content());
+		pstmt.setInt(6, guest.getGuest_no());
+		int rowCount=pstmt.executeUpdate();
+		con.close();
+		
+		return rowCount;
 		
 	}
 	@Override
 	public int deleteGuest(int no)throws Exception {
 		System.out.println("#### GuestDaoImpl : deleteGuest(int no) 호출");
-		return 0;
+		Connection con = dataSource.getConnection();
+		PreparedStatement pstmt=con.prepareStatement(GuestSQL.GUEST_DELETE);
+		pstmt.setInt(1, no);
+		int rowCount=pstmt.executeUpdate();
+		con.close();
+		return rowCount;
 	}
 	
 	

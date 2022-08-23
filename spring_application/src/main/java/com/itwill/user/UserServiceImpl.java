@@ -21,7 +21,7 @@ public class UserServiceImpl implements UserService {
 
 		System.out.println("#### UserServiceImpl : create() 호출");
 
-		return 0;
+		return userDao.create(user);
 	}
 
 	/*
@@ -31,7 +31,7 @@ public class UserServiceImpl implements UserService {
 
 		System.out.println("#### UserServiceImpl : findUser() 호출");
 
-		return null;
+		return userDao.findUser(userId);
 
 	}
 
@@ -40,7 +40,7 @@ public class UserServiceImpl implements UserService {
 	 */
 	public User login(String userId, String password) throws Exception {
 		System.out.println("#### UserServiceImpl : login() 호출");
-		return null;
+		return userDao.;
 
 	}
 

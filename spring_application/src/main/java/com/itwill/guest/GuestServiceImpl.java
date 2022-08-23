@@ -25,22 +25,22 @@ public class GuestServiceImpl implements GuestService {
 	@Override
 	public Guest selectByNo(int no)throws Exception{
 		System.out.println("#### GuestServiceImpl : selectByNo(int no) 호출");
-		return guestDao.selectByNo(124);
+		return guestDao.selectByNo(2);
 	}
 	@Override
-	public int insertGuest(Guest guest)throws Exception{
+	public int insertGuest(Guest insetGuest)throws Exception{
 		System.out.println("#### GuestServiceImpl : insertGuest(Guest guest) 호출");
-		return 0;
+		return guestDao.insertGuest(new Guest(0, "스프링", "2022/02/22" , "spring@naver.com", "www.naver.com", "제목", "내용"));
 	}
 	@Override
 	public int updateGuest(Guest guest)throws Exception{
 		System.out.println("#### GuestServiceImpl : updateGuest(Guest guest) 호출");
-		return 0;
+		return guestDao.updateGuest(new Guest(18, "수정프링", "2022/02/22" , "chring@naver.com", "www.naver.com", "제목수정", "내용수정"));
 	}
 	@Override
 	public int deleteGuest(int no)throws Exception{
 		System.out.println("#### GuestServiceImpl : deleteGuest(int no) 호출");
-		return 0;
+		return guestDao.deleteGuest(15);
 	}
 	
 }
