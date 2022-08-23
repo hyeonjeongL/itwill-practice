@@ -3,6 +3,7 @@ package com.itwill0.context;
 import com.itwill.product.ProductDao;
 import com.itwill.product.ProductDaoImpl;
 import com.itwill.product.ProductService;
+import com.itwill.product.ProductServiceImpl;
 
 public class JavaApplicationMain {
 
@@ -18,12 +19,12 @@ public class JavaApplicationMain {
 			 2.ProductServiceImpl에 생성자에 ProductDaoImp 객체의 주소를 넣어준다
 			  (생성자를 통한 Injection)
 			 3.ProductService객체메쏘드를 호출한다. 
-		****************************************************/
 		
 		ProductDao productDao2 = new ProductDaoImpl();
-		ProductService productService2 = new ProductService(productDao2);
+		ProductService productService2 = new ProductServiceImpl(productDao2);
 		System.out.println(productService2.productList());
 		System.out.println(productService2.productDetail(123));
+		 ****************************************************/
 		
 		/************************case3**************************
 		 * 1. ProductDaoImple객체생성
@@ -33,7 +34,7 @@ public class JavaApplicationMain {
 		 	4.ProductService객체메쏘드를 호출한다. 	  
 		 *****************************************************/
 		ProductDao productDao3 = new ProductDaoImpl();
-		ProductService productService3 = new ProductService();
+		ProductService productService3 = new ProductServiceImpl();
 		productService3.setProductDao(productDao3);
 		
 		System.out.println(productService3.productList());
