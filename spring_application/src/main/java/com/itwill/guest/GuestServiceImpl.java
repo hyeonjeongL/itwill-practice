@@ -9,6 +9,11 @@ public class GuestServiceImpl implements GuestService {
 	public GuestServiceImpl() {
 		System.out.println("1.#### GuestServiceImpl() 기본생성자");
 	}
+	public GuestServiceImpl(GuestDao guestDao) {
+		System.out.println("1.#### GuestServiceImpl("+guestDao+") 생성자");
+		this.guestDao=guestDao;
+		
+	}
 	
 	
 	public void setGuestDao(GuestDao guestDao) {

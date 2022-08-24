@@ -40,7 +40,7 @@ public class UserServiceImpl implements UserService {
 	 */
 	public User login(String userId, String password) throws Exception {
 		System.out.println("#### UserServiceImpl : login() 호출");
-		return userDao.;
+		return null;
 
 	}
 
