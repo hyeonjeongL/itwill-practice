@@ -33,14 +33,12 @@ public class GuestDaoImplMyBatis implements GuestDao {
 
 	@Override
 	public int updateGuest(Guest guest) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.update("com.itwill.guest.mapper.GuestMapper.updateGuest", guest);
 	}
 
 	@Override
 	public int deleteGuest(int no) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.delete("com.itwill.guest.mapper.GuestMapper.deleteGuest", 17);
 	}
 
 }

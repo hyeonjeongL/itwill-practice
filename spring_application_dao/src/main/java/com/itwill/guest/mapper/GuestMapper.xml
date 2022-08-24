@@ -11,8 +11,19 @@
 		resultType="com.itwill.guest.Guest">
 		select * from guest where guest_no=#{guest_no}
 	</select>
-
-	<insert id="insertGuest" parameterType="Guest">
+	
+	<delete id="deleteGuest" parameterType="int">
+		delete from guest where guest_no=#{gueust_no}
+	
+	</delete>
+	
+	<update id="updateGuest" parameterType="com.itwill.guest.Guest">
+	update guest set guest_name=#{guest_name},guest_date=#{guest_date},guest_email=#{guest_email},
+		guest_homepage=#{guest_homepage},guest_title=#{guest_title},guest_content=#{guest_content}
+		where guest_no=#{guest_no}
+	</update>
+	
+	<insert id="insertGuest" parameterType="com.itwill.guest.Guest">
 		insert into guest
 		(guest_no, guest_name, guest_date, guest_email,guest_homepage, guest_title,
 		guest_content)
@@ -20,7 +31,6 @@
 		#{guest_name},#{guest_date},#{guest_email},#{guest_homepage},#{guest_title},#{guest_content})
 
 	</insert>
-
 
 
 </mapper>
