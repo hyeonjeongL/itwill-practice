@@ -44,7 +44,7 @@ public class MapperInterfaceStudentDao {
 		return studentList;
 	}
 
-	public Student findStudentByIdWithAddress(Integer studId) {
+	public Student findStudentByIdWithAddress(Integer studId) { 
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
 		StudentMapper studentMapper = sqlSession.getMapper(StudentMapper.class);
 		Student student = studentMapper.findStudentByIdWithAddress(studId);
