@@ -2,6 +2,12 @@ package com.itwill.guest;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Service;
+@Service(value = "guestService")
+@Scope(value = "prototype")
 public class GuestServiceImpl implements GuestService {
 	
 	private GuestDao guestDao;
@@ -9,13 +15,15 @@ public class GuestServiceImpl implements GuestService {
 	public GuestServiceImpl() {
 		System.out.println("1.#### GuestServiceImpl() 기본생성자");
 	}
-	public GuestServiceImpl(GuestDao guestDao) {
+	@Autowired
+	public GuestServiceImpl(@Qualifier(value = "guestDao") GuestDao guestDao) {
 		System.out.println("1.#### GuestServiceImpl("+guestDao+") 생성자");
 		this.guestDao=guestDao;
 		
 	}
 	
-	
+	@Autowired(required = true)
+	@Qualifier(value = "guestDao")
 	public void setGuestDao(GuestDao guestDao) {
 		System.out.println("#### GuestServiceImpl : setGuestDao("+guestDao+") 호출");
 		this.guestDao = guestDao;

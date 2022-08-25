@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import com.itwill.user.User;
+
 public class GuestDaoImplJdbcTemplate implements GuestDao {
 	private JdbcTemplate jdbcTemplate;
 	public GuestDaoImplJdbcTemplate() {
@@ -32,7 +34,7 @@ public class GuestDaoImplJdbcTemplate implements GuestDao {
 
 	@Override
 	public int insertGuest(Guest guest) throws Exception {
-		return 0;
+		return jdbcTemplate.update(GuestSQL.GUEST_INSERT, guest);
 	}
 
 	@Override
@@ -43,7 +45,7 @@ public class GuestDaoImplJdbcTemplate implements GuestDao {
 
 	@Override
 	public int deleteGuest(int no) throws Exception {
-		return 0;
+		return jdbcTemplate.update(GuestSQL.GUEST_DELETE,no);
 	}
 	
 

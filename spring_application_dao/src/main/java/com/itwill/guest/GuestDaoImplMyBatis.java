@@ -23,7 +23,9 @@ public class GuestDaoImplMyBatis implements GuestDao {
 
 	@Override
 	public Guest selectByNo(int no) throws Exception {
-		return sqlSession.selectOne("com.itwill.guest.mapper.GuestMapper.selectByNo",no);
+		Guest guest = sqlSession.selectOne("com.itwill.guest.mapper.GuestMapper.selectByNo",no);
+		return guest;
+				
 	}
 
 	@Override

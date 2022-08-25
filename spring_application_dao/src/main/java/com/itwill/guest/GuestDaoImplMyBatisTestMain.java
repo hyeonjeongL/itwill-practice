@@ -20,9 +20,15 @@ public class GuestDaoImplMyBatisTestMain {
 		Guest guest = guestDao.selectByNo(10);
 		System.out.println("selectByNo(10) : "+ guest);
 		System.out.println("deleteGuest : "+guestDao.deleteGuest(17));
-		System.out.println("updateGuest : "+guestDao.updateGuest(new Guest(18, "임업뎃", "2022/08/25", "upda@naver.com", "http://www.update.com", "마이바티스", "어려워")));
-		System.out.println("insertGuest : "+guestDao.insertGuest(new Guest(0, "대하", "2022/02/02", "deaha@naver.com", "http://www.dada.com", "대하소금구이", "대하대하")));
+		Guest updatGuest = guestDao.selectByNo(18);
+		updatGuest.setGuest_name("임업뎃");
+		updatGuest.setGuest_date("2022/10/25");
+		updatGuest.setGuest_email("upda232@naver.com");
+		System.out.println(updatGuest);
 		
+		Guest newGuest = new Guest(0, "대하", "2022/02/02", "deaha@naver.com", "http://www.dada.com", "대하소금구이", "대하대하");
+		System.out.println("insertGuest : "+guestDao.insertGuest(newGuest));
+		System.out.println(newGuest);
 
 	}
 

@@ -10,7 +10,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-import com.mybatis3.deep.mapper.StudentMapper;
+import com.mybatis3.dao.mapper.StudentMapper;
 import com.mybatis3.domain.Student;
 
 public class MyBatisMapperInterfaceFlowMain {
@@ -19,29 +19,42 @@ public class MyBatisMapperInterfaceFlowMain {
 		/*
 		 * 0.mybatis-config-mapper-interface.xml --> InputStream
 		 */
+		InputStream myBatisConfigInputStream = 
+				Resources.getResourceAsStream("mybatis-config-mapper-interface.xml");
 		/*
 		 * 1. SqlSessionFactoryBuilder
 		 */
+				SqlSessionFactoryBuilder sqlSessionFactoryBuilder=
+				new SqlSessionFactoryBuilder();
 		/*
 		 * 2. SqlSessionFactory
 		 */
+		SqlSessionFactory sqlSessionFactory=
+				sqlSessionFactoryBuilder.build(myBatisConfigInputStream);
 		/*
 		 * 3. SqlSession open
 		 */
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
 		/*
 		 * autocommit true
 		 */
 		/*
 		 * 4. StudentMapper[MapperInterface]��ü����
 		 */
+		StudentMapper studentMapper = sqlSession.getMapper(StudentMapper.class);
 		/*
 		org.apache.ibatis.binding.MapperProxy
 		 */
 		/*
 		 * 5. StudentMapper[MapperInterface]��ü���[CRUD]
 		 */
+		List<Student> studentList = studentMapper.findAllStudents();
+		System.out.println("#### findAllStudents"+studentList);
+		
+		Student student = studentMapper.findStudentById(3);
+		System.out.println("#### findStudentById : "+student);
 		/*
-		 * 5. SqlSession close
+		 * 6. SqlSession close
 		 */
 	}
 }

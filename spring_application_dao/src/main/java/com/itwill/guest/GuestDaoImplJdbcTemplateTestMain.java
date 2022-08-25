@@ -18,7 +18,7 @@ public class GuestDaoImplJdbcTemplateTestMain {
 		GuestDao guestDao = (GuestDao) applicationContext.getBean("guestDao");
 		System.out.println("1. selectAll : "+guestDao.selectAll());
 		System.out.println("2. selectByNo : "+guestDao.selectByNo(4));
-		System.out.println("3. insertGuest : "+guestDao.insertGuest(null));
+		System.out.println("3. insertGuest : "+guestDao.insertGuest(new Guest(0, "게스츠", "2022/08/25", "guest@naver.com", "www.www.www", "타이틀", "건텐츠")));
 		System.out.println("4. updateGuest : "+guestDao.updateGuest(null));
 		System.out.println("5. deleteGuest : "+guestDao.deleteGuest(14));
 
