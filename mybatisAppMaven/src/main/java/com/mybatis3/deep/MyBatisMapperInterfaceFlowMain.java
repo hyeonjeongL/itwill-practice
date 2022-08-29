@@ -39,14 +39,15 @@ public class MyBatisMapperInterfaceFlowMain {
 		 * autocommit true
 		 */
 		/*
-		 * 4. StudentMapper[MapperInterface]��ü����
+		 * 4. StudentMapper[MapperInterface]객체생성
 		 */
 		StudentMapper studentMapper = sqlSession.getMapper(StudentMapper.class);
 		/*
 		org.apache.ibatis.binding.MapperProxy
 		 */
+		System.out.println("MapperProxy : "+studentMapper);
 		/*
-		 * 5. StudentMapper[MapperInterface]��ü���[CRUD]
+		 * 5. StudentMapper[MapperInterface]객체사용[CRUD]
 		 */
 		List<Student> studentList = studentMapper.findAllStudents();
 		System.out.println("#### findAllStudents"+studentList);

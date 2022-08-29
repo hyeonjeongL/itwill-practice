@@ -36,6 +36,14 @@ public class MapperInterfaceStudentDao {
 		return student;
 	}
 
+	public Student findStudentByIdResultMap(Integer studId) {
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+		StudentMapper studentMapper = sqlSession.getMapper(StudentMapper.class);
+		Student student = studentMapper.findStudentByIdResultMap(studId);
+		sqlSession.close();
+		return student;
+	}
+
 	public List<Student> findAllStudents() {
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
 		StudentMapper studentMapper = sqlSession.getMapper(StudentMapper.class);

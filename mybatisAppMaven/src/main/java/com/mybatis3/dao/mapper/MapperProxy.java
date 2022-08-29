@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import com.mybatis3.domain.Student;
 
 public class MapperProxy implements StudentMapper {
+	
 	private SqlSession sqlSession;
 	@Override
 	public Student findStudentById(Integer studId) {

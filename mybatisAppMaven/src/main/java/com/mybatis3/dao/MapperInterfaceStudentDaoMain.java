@@ -12,6 +12,8 @@ public class MapperInterfaceStudentDaoMain {
 		System.out.println(mapperInterfaceStudentDao.findStudentById(3));
 		System.out.println("---------findStudentByIdWithAddress-----------------------------");
 		System.out.println(mapperInterfaceStudentDao.findStudentByIdWithAddress(3));
+		System.out.println("---------findStudentByIdResultMap-----------------------------");
+		System.out.println(mapperInterfaceStudentDao.findStudentByIdResultMap(3));
 	}
 
 }

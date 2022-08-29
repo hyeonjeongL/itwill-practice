@@ -2,6 +2,8 @@ package com.mybatis3.dao.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.ResultMap;
+
 import com.mybatis3.domain.Student;
 
 public interface StudentMapper {
@@ -39,5 +41,7 @@ public interface StudentMapper {
       	where s.stud_id=#{studId}
 	 </select>
 	 */
+
+	public Student findStudentByIdResultMap(Integer studID);
 	
 }
