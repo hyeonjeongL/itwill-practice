@@ -71,9 +71,16 @@ public class GuestController {
 		
 		return "redirect:guest_list";
 	}
+	//parameter 중에 guest_no가 존재하지 않으면 실행
+	@RequestMapping(value="guest_view", params="!guest_no")
+	public String guest_view() throws Exception{
+		return "redirect:guest_main";
+	}
 	
-	@RequestMapping("/guest_view")
-	public String guest_view(@RequestParam int guest_no, Model model) {
+	
+	//parameter 중에 guest_no가 존재하면 실행
+	@RequestMapping(value="/guest_view", params="guest_no")
+	public String guest_view(@RequestParam int guest_no, Model model) throws Exception {
 		try {
 			Guest guest = guestService.selectByNo(guest_no);
 			model.addAttribute("guest", guest);
@@ -89,6 +96,10 @@ public class GuestController {
 	
 		return "redirect:guest_list";
 //		return "forward:/WEB-INF/views/guest_main.jsp";
+	}
+	
+	public String handle_exception(Exception e) {
+		return "forward:/WEB-INF/views/guest_error.jsp";
 	}
 	
 }
