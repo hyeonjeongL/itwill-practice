@@ -152,7 +152,11 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
+<<<<<<< HEAD
       <Context docBase="guest_spring_annotation" path="/guest_spring_annotation" reloadable="true" source="org.eclipse.jst.jee.server:guest_spring_annotation"/><Context docBase="javascript" path="/javascript" reloadable="true" source="org.eclipse.jst.jee.server:javascript"/></Host>
+=======
+      <Context docBase="user_spring_annotation" path="/user_spring_annotation" reloadable="true" source="org.eclipse.jst.jee.server:user_spring_annotation"/></Host>
+>>>>>>> branch 'master' of https://github.com/hyeonjeongL/workspace-spring-tool-suite-4-4.15.3.RELEASE.git
     </Engine>
   </Service>
 </Server>
