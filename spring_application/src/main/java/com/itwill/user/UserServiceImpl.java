@@ -57,6 +57,9 @@ public class UserServiceImpl implements UserService {
 
 	public int update(User user) throws Exception {
 		System.out.println("#### UserServiceImpl : update() 호출");
+		if(true) {
+			throw new Exception("회원수정시 예외발생 !!!");
+		}
 		return 0;
 	}
 
