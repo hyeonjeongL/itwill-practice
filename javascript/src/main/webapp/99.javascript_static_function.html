@@ -5,8 +5,17 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 /********************************************/
-
-
+function Member(id,name){
+	this.id=id;
+	this.name=name;
+}
+//메소드는 프로토타입 안에 만드는 것이 좋다
+Member.prototype.instance_method1=function(){
+	document.write("Member객체.instance_method1()-->"+this.id+','+this.name+"<br>");
+}
+Member.static_method=function(){
+	document.write("Member함수.static_method()<br>");
+} //this 호출 불가
 /********************************************/
 </script>
 
@@ -15,9 +24,18 @@
 <h1>javascript static function</h1><hr/>
 <script type="text/javascript">
     /****************instance method호출************/
+	var m1 = new Member(1,'임현정');
+	var m2 = new Member(2,'림현정');
+	m1.instance_method1();
+	m2.instance_method1();
+	
+	var myAlert = window.alert;
+	myAlert('alert!!!!!!!!!!!!!!!!!!!!!');
 	
 	/****************static method호출************/
-
+	var no = Math.round(347.3432);
+	document.write("Math.round(347.6432) -->"+no+"<br>");
+	Member.static_method();
 	
 </script>
 </body>

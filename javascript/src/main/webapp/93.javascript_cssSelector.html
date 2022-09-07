@@ -4,6 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>CSS 선택자를 이용한 HTML DOM Element 검색</title>
 <style>
+/*
 div,span{
 	width: 100px;
 	height: 40px;
@@ -21,6 +22,7 @@ div,span{
 div.myClass{
 	background-color:pink;
 }
+*/
 </style>
 <script type="text/javascript">
 </script>
@@ -36,9 +38,17 @@ div.myClass{
 	<div class="myClass">DIV class="myClass"</div>
 	<script type="text/javascript">
 		/*********(,or)  #content or div**********/
+		var nodeList1 = document.querySelectorAll('#content,div');
+		nodeList1[i].style.border='1px solid blue';
 		/*********class가 myClass인 모든 엘레멘트*****/
+		var nodeList2 = document.querySelectorAll('.myClass');
+		nodeList2[i].style.color='green';
 		/*********div 엘레멘트중에서 class가 myClass인 모든 엘레멘트*****/
+		var nodeList3 = document.querySelectorAll('div.myClass');
+		nodeList3[0].style.backgroundColor='purple';
 		/*********id가 content인 엘레멘트*****/
+		document.querySelector('#content').style.backgroundColor='aliceblue';
+		
 	</script>
 </body>
 </html>

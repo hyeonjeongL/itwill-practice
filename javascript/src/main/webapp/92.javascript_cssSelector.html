@@ -4,6 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>CSS 선택자를 이용한 HTML DOM Element 검색</title>
 <style type="text/css">
+/*
 	#title{
 		color:maroon;
 	}
@@ -13,7 +14,7 @@
 	h2{
 		color: gold;
 	}
-
+*/
 </style>
 <script type="text/javascript">
 </script>
@@ -28,17 +29,22 @@
 		/*
 		 1.id selector(#)
 		*/
-		
+		var titleDivElement = document.querySelector('#title');
+		titleDivElement.innerHTML='안녕 querySelector~~~~~';
 		/*
 		2.class selector(.)
 		*/
-	
-		
+		var contentsPElement = document.querySelector(".contents");
+		contentsPElement.innerHTML+="변경";
 		/*
 		3. tag selector
 		*/
+		var h2ElementArray=document.querySelectorAll('h2');
+		for (var i=0;i<h2ElementArray.length;i++){
+			h2ElementArray[i].style.backgroundColor='mistyrose';
+		}
 		
-		
+		//스크립트를 바디에 작성하면 onload할 필요없다는데 
 	</script>
 </body>
 </html>
