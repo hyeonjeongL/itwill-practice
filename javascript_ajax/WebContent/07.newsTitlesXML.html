@@ -1,59 +1,93 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<style type="text/css">
-/*
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style type="text/css">
+		/*
 	1.tag selector
 	*/
-h1 {
-	color: blue;
-	text-align: center;
-}
+		h1 {
+			color: blue;
+			text-align: center;
+		}
 
-ul {
-	list-style: none;
-	padding-left: 0px;
-}
-/*
+		ul {
+			list-style: none;
+			padding-left: 0px;
+		}
+
+		/*
 	2. class selector
 	*/
-.titleBackClass {
-	background-color: yellow;
-}
-/*
+		.titleBackClass {
+			background-color: yellow;
+		}
+
+		/*
 	3.id selector
 	*/
-	#content{
-		border: 1px solid black; 
-		width: 80%;
-		margin-top:50px; 
-		margin-right:auto; 
-		margin-left:auto; 
-		margin-bottom:50px; 
-		padding: 20px;
-	}
+		#content {
+			border: 1px solid black;
+			width: 80%;
+			margin-top: 50px;
+			margin-right: auto;
+			margin-left: auto;
+			margin-bottom: 50px;
+			padding: 20px;
+		}
 
-#newsDiv {
-	padding-left: 10%;
-	border: 1px solid blue;
-	font-size: 13pt;
-	background: orange;
-}
-</style>
+		#newsDiv {
+			padding-left: 10%;
+			border: 1px solid blue;
+			font-size: 13pt;
+			background: orange;
+		}
+	</style>
 
-<script type="text/javascript">
-	function requestNews() {
-		
-	}
-	function responseNews() {
+	<script type="text/javascript">
+		function requestNews() {
+			xhr = new XMLHttpRequest();
+			xhr.open('GET', '07.newsTitlesXML.jsp');
+			xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			xhr.onload = responseNews;
+			xhr.send(null);
+		}
+		function responseNews() {
+			//console.log(xhr.responseText);
+			var xmlDocument = xhr.responseXML;
+
+			var newsElementList = xmlDocument.getElementsByTagName('news');
+			var html="<ul>";
+
+			for (var i = 0; i < newsElementList.length; i++) {
+				var newsElement = newsElementList[i]
 			
+			/*
+						<news>
+							<title>참으로 수고 많으셨습니다</title>
+							<company>연합뉴스</company>
+							<date>2020. 3. 16 오전 11:24:31</date>
+						</news>
+			*/
+				var titleElementList = newsElement.getElementsByTagName("title");
+				var titleElement = titleElementList[0];
+				var titleTextNode = titleElement.firstChild;
+				var titleStr = titleTextNode.nodeValue;
+				var companyStr = newsElement.getElementsByTagName('company')[0].firstChild.nodeValue;
+				var dateStr = newsElement.getElementsByTagName('date')[0].firstChild.nodeValue;
+				
+				console.log(titleStr+","+companyStr+","+dateStr);
+				html+="<li>"+titleStr+"["+companyStr+"-"+dateStr+"]</li>"
+				}
+				html +="</ul>";
+				document.querySelector('#newsDiv').innerHTML=html;
 			/*
 			<< 서버로부터받은데이타[XML] >>
 			<?xml version="1.0" encoding="UTF-8" ?>
 			<result>
-			    <count>9</count>
+			    <code>1</code>
 			    <data>
 			        <newsList>
 			            <news>
@@ -82,15 +116,14 @@ ul {
 				<li>한국인들 실직·이직 공포에 시달린다[ITWILL뉴스-2021. 4. 14 오후 12:33:32]</li>
 			</ul>
 			 */
-			 if(xhr.readyState==4){
-				
-			 }
+			
 	}//end function
 	window.onload=function(){
 		setInterval(requestNews,3000);
 	}
-</script>
+	</script>
 </head>
+
 <body>
 	<div id="content">
 		<h1 class="titleBackClass">실시간늬우스[XML]</h1>
@@ -104,4 +137,5 @@ ul {
 		</div>
 	</div>
 </body>
+
 </html>

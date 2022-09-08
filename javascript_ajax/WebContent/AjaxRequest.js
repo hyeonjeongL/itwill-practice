@@ -23,8 +23,10 @@ function AjaxRequest(method,url,callbackFunction,params) {
 		callbackFunction(this);
 	}
 	*/
-	
-	this.xhr.onload=callbackFunction
+	var XHR=this.xhr;
+	this.xhr.onload=function(){
+		callbackFunction(XHR);
+	};
 	this.xhr.open(this.method,this.url);
 	this.xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
 	/*

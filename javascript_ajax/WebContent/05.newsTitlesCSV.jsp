@@ -28,9 +28,9 @@
 <%
 	List<News> newsList= this.getNewsList();
 	/*
-		3#title1,company1,date1|title2,company2,date2|title3,company3,date3
-		2#title1,company1,date1|title2,company2,date2
-		0#
+		title1,company1,date1|title2,company2,date2|title3,company3,date3
+		title1,company1,date1|title2,company2,date2
+		
 	*/
 	StringBuffer sb=new StringBuffer();
 	for(int i=0;i<newsList.size();i++){
