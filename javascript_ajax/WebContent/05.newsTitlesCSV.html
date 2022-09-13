@@ -58,18 +58,16 @@
 		}
 	</style>
 
-	<script type="text/javascript" src="AjaxRequest.js"></script>
 	<script type="text/javascript">
+		var xhr = null;
 
-		var ajaxRequest = null;
 		function requestNews() {
-			var ajaxRequest = new AjaxRequest('GET','05.newsTitlesCSV.jsp',responseNews,null);
 
-			//xhr = new XMLHttpRequest();
-			//xhr.open('GET', '05.newsTitlesCSV.jsp');
-			//xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-			//xhr.onload = responseNews;
-			//xhr.send(null);
+			xhr = new XMLHttpRequest();
+			xhr.open('GET', '05.newsTitlesCSV.jsp');
+			xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			xhr.onload = responseNews;
+			xhr.send(null);
 		}
 		function responseNews() {
 			var responseCSV = xhr.responseText;

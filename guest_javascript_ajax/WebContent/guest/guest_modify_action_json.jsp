@@ -9,7 +9,7 @@
 	String jsonData="";
 	
 	if(request.getMethod().equalsIgnoreCase("GET")){
-		code=0;
+		code=2;
 		url="guest_main_content";
 		msg="잘못된요청방식입니다.";
 		jsonData="";
