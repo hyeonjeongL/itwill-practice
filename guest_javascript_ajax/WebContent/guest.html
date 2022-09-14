@@ -198,6 +198,7 @@
 					
 					var f=document.querySelector('#guest_modify_form');
 					var param='';
+					param+='guest_no='+f.guest_no.value;
 					param+='guest_name='+f.guest_name.value;
 					param+='&guest_email='+f.guest_email.value;
 					param+='&guest_homepage='+f.guest_homepage.value;
@@ -209,12 +210,12 @@
 									 		 'guest/guest_modify_action_json.jsp',
 											 function(jsonResult){
 												if(jsonResult.code==1){
-													document.querySelector('#btn_guest_modify_action').click();
+													document.querySelector('#menu_guest_list').click();
 												}else if(jsonResult.code==2){
 													alert(jsonResult.msg);
 												}
-											},
-											 "guest_no="+e.target.getAttribute('geust_no'));
+											},param
+											 );
 					
 				}
 				/******guest_remove_action*********/
