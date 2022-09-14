@@ -17,7 +17,29 @@
 		/*
 		$.grep();
 		*/
+		var filterNameArray = $.grep(memberNameArray,function(name, i){
+			if(name.startsWith('k')){
+				return true;
+			}else {
+				return false;
+			}
+		},false);
 		
+		$.each(filterNameArray,function(i, name){
+			$('.selected1').append(name+" ");
+		});
+		
+		var filterMemberArray = $.grep(memberArray,function(member,index){
+			if(member.address=='경기미'){
+				return true;
+			}else{
+				return false;
+			}
+		},true);
+		$.each(filterMemberArray,function(index,member){
+			$('.selected2').append(`[${member.id}]${member.name}<br>`);
+			
+		});
 		
 	});
 </script>

@@ -6,7 +6,9 @@
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 	$(function(){
-		
+		var h2Text=$('h2').text();
+		$('#title').html(h2Text);
+		$('.contents').html("<u>jQuery는 오픈소스입니다.</u>");
 	});
 </script>
 </head>

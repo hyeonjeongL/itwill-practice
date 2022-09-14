@@ -8,13 +8,19 @@
 <script type="text/javascript">
 $(function() {
 	
-	console.log('1. li element array:');
-	console.log('2. li element array index 0:');
-	console.log('3. li element array index 0 firstChild.nodeValue:');
-	console.log('4. li index 4 li element:');
+	var listElementArray=$('#nameList > li').get();
+	var listElement=$('#nameList > li').get(0);
+	
+	
+	console.log('1. li element array:'+listElementArray);
+	console.log('2. li element index 0:'+listElement);
+	console.log('2. li element array index 0:'+listElementArray[0]);
+	console.log('3. li element array index 0 firstChild.nodeValue:'+listElement.firstChild.nodeValue);
+	console.log('2. li element index 0 $(listElement).text():'+$(listElement).text());
+	console.log('4. li index 4 li element:'+$('#nameList > li').get(4).firstChild.nodeValue);
 	console.log('5. li index 4 li element.firstChild.nodeValue:');
 	
-	
+	$('h2').text('Members of Group are '+$('#nameList > li').get().length+"명");
 	
 });
 </script>
