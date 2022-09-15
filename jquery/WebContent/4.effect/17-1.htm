@@ -4,25 +4,28 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script type="text/javascript">
         $(function(){
+        	
+         	$('h1,h3').next().hide();
+        	
         	$('h1,h3').click(function(e){
-        		/**************기본효과(slide)*********
+        		/**************기본효과(slide)*****************/
         		//$(e.target).next().hide();
         		//$(e.target).next().show();
-        		$(e.target).next().toggle();
-        		************************************/
-        		/**************slide효과***************
+        		//$(e.target).next().toggle();
+        		
+        		/**************slide효과*******************/
         		//$(e.target).next().slideUp();
         		//$(e.target).next().slideDown();
-        		$(e.target).next().slideToggle()
-        		****/
+        		$(e.target).next().slideToggle(2000);
         		
-        		/**************fade효과***************/
+        		
+        		/**************fade효과**************	
         		//$(e.target).next().fadeOut();
         		//$(e.target).next().fadeIn();
         		$(e.target).next().fadeToggle(2000,function(){
-        			alert('fadeToggle이완료된후 실행하는 function');
+        		alert('fadeToggle이완료된후 실행하는 function');
         		});
-        		
+        		*/
         		
         		
         	});
