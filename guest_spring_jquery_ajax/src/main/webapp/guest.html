@@ -31,6 +31,21 @@ $(function(){
 			e.preventDefault();
 	 });
     /*********guest_detail****************/
+    $(document).on('click', '.guest_item_a', function (e) {
+				$.ajax({
+					url: 'guest/guest_detail_json',
+					method: 'GET',
+					data: 'guest_no=' + e.target.getAttribute('guest_no'),
+					success: function (jsonResult) {
+						var guest = jsonResult.data[0];
+						$('#content').html(guest_view_content(guest));
+						e.preventDefault();
+					}
+
+				});
+			})
+
+    
     /*********guest_list******************/
     $(document).on('click','#menu_guest_list',function(e){
 		$.ajax({
@@ -44,9 +59,124 @@ $(function(){
 		e.preventDefault();
     });
     /*********guest_write_action**********/
-    /*********guest_modify_form***********/
-    /*********guest_modify_action*********/
-    /*********guest_remove_action*********/
+    $(document).on('click', '#btn_guest_write_action', function (e) {
+				if ($('input[name=guest_name]').val() == "") {
+					alert("이름을 입력하십시요.");
+					$('input[name=guest_name]').focus();
+					return;
+				}
+				if ($('input[name=guest_email]').val() == "") {
+					alert("이메일을 입력하십시요.");
+					$('input[name=guest_email]').focus();
+					return;
+				}
+				if ($('input[name=guest_homepage]').val() == "") {
+					alert("홈페이지를 입력하십시요.");
+					$('input[name=guest_homepage]').focus();
+					return;
+				}
+				if ($('input[name=guest_title]').val() == "") {
+					alert("제목을 입력하십시요.");
+					$('input[name=guest_title]').focus();
+					return;
+				}
+				if ($('input[name=guest_content]').val() == "") {
+					alert("내용을 입력하십시요.");
+					$('input[name=guest_content]').focus();
+					return;
+				}
+				var queryString = $('#guest_write_form').serialize();
+				/*var Params = {
+								'guest_name' : $('input[name=guest_name]').val(),
+								'guest_email' :  $('input[name=guest_email]').val(),
+								'guest_homepage' : $('input[name=guest_homepage]').val(),
+								'guest_title' : $('input[name=guest_title]').val(),
+								'guest_content' : $('input[name=guest_content]').val()
+							};
+							*/
+				$.ajax({
+					url: 'guest/guest_write_action_json.jsp',
+					method: 'POST',
+					data: queryString,
+					dataType: 'json',
+					success: function (jsonResult) {
+						if (jsonResult.code == 1) {
+							var guestArray = jsonResult.data;
+							$('#content').html(guest_list_content(guestArray));
+						} else if (jsonResult == 2) {
+							alert(jsonResult.msg);
+						}
+						e.preventDefault();
+					}
+
+				});
+			})
+
+			/*********guest_modify_form***********/
+			$(document).on('click', '#btn_guest_modify_form', function (e) {
+				$.ajax({
+					url: 'guest/guest_modify_form_json',
+					method: 'POST',
+					data: 'guest_no=' + e.target.getAttribute('guest_no'),
+					success: function (jsonResult) {
+						var guest = jsonResult.data[0];
+						$('#content').html(guest_modify_form_content(guest));
+						e.preventDefault();
+					}
+				})
+			})
+			/*********guest_modify_action*********/
+			$(document).on('click', '#btn_guest_modify_action', function (e) {
+				var editParam = $('#guest_modify_form').serialize();
+				$.ajax({
+					url: 'guest/guest_modify_action_json',
+					method: 'POST',
+					data: editParam,
+					dataType: 'JSON',
+					success: function (jsonResult) {
+						if (jsonResult == 1) {
+							$.ajax({
+								url: 'guest/guest_detail_json',
+								method: 'GET',
+								success: function (result) {
+									var guest = result.data[0];
+									$('#content').html(guest_view_content(guest));
+								}
+							});
+						} else if (jsonResult == 2) {
+							alert(jsonResult.msg);
+						}
+					},
+					error: function (request, status, error) {
+						alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+					e.preventDefault();
+					}
+				})
+			})
+			/*********guest_remove_action*********/
+			$(document).on('click', '#btn_guest_remove_action', function (e) {
+				$.ajax({
+					url: 'guest/guest_remove_action_json',
+					method: 'POST',
+					data: 'guest_no=' + e.target.getAttribute('guest_no'),
+					success: function (jsonResult) {
+						if (jsonResult.code == 1) {
+							var guestArray = jsonResult.data;
+							$('#content').html(guest_list_content(guestArray));
+
+						} else if (jsonResult == 2) {
+							alert(jsonResult.msg);
+						}
+					},
+						error: function (request, status, error) {
+						alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+						e.preventDefault();
+						}
+				})
+			})
+    
+    
+    
 });	
 	
 

@@ -14,7 +14,7 @@
 	String guest_no = request.getParameter("guest_no");
 	if (guest_no == null || guest_no.equals("")){
 		code = 2;
-		url = "";
+		url = "guset_main";
 		msg = "잘못된요청방식입니다.";
 	}else{
 		System.out.println("*********jQuery Ajax요청정보(guest_detail_json.jsp)*********");

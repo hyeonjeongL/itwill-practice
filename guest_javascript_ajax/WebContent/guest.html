@@ -62,8 +62,8 @@
 				document.querySelector('#content').innerHTML = guest_write_form_content();
 				e.preventDefault();
 			});
-			
-			
+
+
 			/******guest_detail******************
 			console.log(document.querySelectorAll('.guest_item_a'))
 
@@ -116,14 +116,14 @@
 					e.preventDefault();
 
 				}
-				
-					/******guest_write_from*****************
-					if(e.target.id== '#menu_guest_write_form' || e.target.id=='#btn_guest_write_form'){
-				document.querySelector('#content').innerHTML = guest_write_form_content();
-						e.preventDefault();
-						
-					}
-					*/
+
+				/******guest_write_from*****************
+				if(e.target.id== '#menu_guest_write_form' || e.target.id=='#btn_guest_write_form'){
+			document.querySelector('#content').innerHTML = guest_write_form_content();
+					e.preventDefault();
+					
+				}
+				*/
 
 				/******guest_write_action***********/
 				if (e.target.id == 'btn_guest_write_action') {
@@ -154,33 +154,33 @@
 						document.f.guest_content.focus();
 						return false;
 					}
-					
-					var f=document.querySelector('#guest_write_form');
-					var param='';
-					param+='guest_name='+f.guest_name.value;
-					param+='&guest_email='+f.guest_email.value;
-					param+='&guest_homepage='+f.guest_homepage.value;
-					param+='&guest_title='+f.guest_title.value;
-					param+='&guest_content='+f.guest_content.value;
-					
+
+					var f = document.querySelector('#guest_write_form');
+					var param = '';
+					param += 'guest_name=' + f.guest_name.value;
+					param += '&guest_email=' + f.guest_email.value;
+					param += '&guest_homepage=' + f.guest_homepage.value;
+					param += '&guest_title=' + f.guest_title.value;
+					param += '&guest_content=' + f.guest_content.value;
+
 					guestService.sendRequest('POST',
-											 'guest/guest_write_action_json.jsp',
-											 function(jsonResult){
-												if(jsonResult.code==1){
-													//리스트를 보여준다
-													/*
-													menu_guest_list anchor의 click event trigger발생
-													*/
-													document.querySelector('#menu_guest_list').click();
-												}else if(jsonResult.code==2){
-													alert(jsonResult.msg);
-												}
-											},
-											 param);
+						'guest/guest_write_action_json.jsp',
+						function (jsonResult) {
+							if (jsonResult.code == 1) {
+								//리스트를 보여준다
+								/*
+								menu_guest_list anchor의 click event trigger발생
+								*/
+								document.querySelector('#menu_guest_list').click();
+							} else if (jsonResult.code == 2) {
+								alert(jsonResult.msg);
+							}
+						},
+						param);
 
 				}
 				/******guest_modify_form***********/
-				if(e.target.id=='btn_guest_modify_form'){
+				if (e.target.id == 'btn_guest_modify_form') {
 					console.log(e.target.getAttribute('guest_no'));
 					guestService.sendRequest('POST',
 						'guest/guest_modify_form_json.jsp',
@@ -191,53 +191,60 @@
 						},
 						"guest_no=" + e.target.getAttribute('guest_no'));
 
-				
+
 				}
 				/******guest_modify_action*********/
-				if(e.target.id=='btn_guest_modify_action'){
-					
-					var f=document.querySelector('#guest_modify_form');
-					var param='';
-					param+='guest_no='+f.guest_no.value;
-					param+='guest_name='+f.guest_name.value;
-					param+='&guest_email='+f.guest_email.value;
-					param+='&guest_homepage='+f.guest_homepage.value;
-					param+='&guest_title='+f.guest_title.value;
-					param+='&guest_content='+f.guest_content.value;
-					
-					
-					guestService.sendRequest('POST', 
-									 		 'guest/guest_modify_action_json.jsp',
-											 function(jsonResult){
-												if(jsonResult.code==1){
-													document.querySelector('#menu_guest_list').click();
-												}else if(jsonResult.code==2){
-													alert(jsonResult.msg);
-												}
-											},param
-											 );
-					
-				}
+				if (e.target.id == 'btn_guest_modify_action') {
+
+					var f = document.querySelector('#guest_modify_form');
+					var param = '';
+					param += 'guest_no=' + f.guest_no.value;
+					param += '&guest_name=' + f.guest_name.value;
+					param += '&guest_email=' + f.guest_email.value;
+					param += '&guest_homepage=' + f.guest_homepage.value;
+					param += '&guest_title=' + f.guest_title.value;
+					param += '&guest_content=' + f.guest_content.value;
+
+
+					guestService.sendRequest('POST',
+						'guest/guest_modify_action_json.jsp',
+						function (jsonResult) {
+							if (jsonResult.code == 1) {
+								guestService.sendRequest('GET',
+									'guest/guest_detail_json.jsp',
+									function (jsonResult) {
+										var guest = jsonResult.data[0];
+										document.querySelector('#content').innerHTML = guest_view_content(guest);
+									}, "guest_no="+f.guest_no.value);
+							} else if (jsonResult.code == 2) {
+								alert(jsonResult.msg);
+							}
+						}, param
+					);
+
+				}//왜안되냐,,,,
+				
+				
 				/******guest_remove_action*********/
-				if(e.target.id=='btn_guest_remove_action'){
+				if (e.target.id == 'btn_guest_remove_action') {
 					//console.log(e.target.getAttribute(guest_no));//여기서 guest_no 뽑아내는 방법은?
 					guestService.sendRequest('POST',
-											 'guest/guest_remove_action_json.jsp',
-											 function(){
-												document.querySelector('#menu_guest_list').click();
-											},
-											 "guest_no=" + e.target.getAttribute('guest_no'));
+						'guest/guest_remove_action_json.jsp',
+						function () {
+							document.querySelector('#menu_guest_list').click();
+						},
+						"guest_no=" + e.target.getAttribute('guest_no'));
 					e.preventDefault();
-					
+
 				}
-				
-				
+
+
 			}); //document event end
 
 			/*
 			load시 홈화면 보이게 하는 두가지
 			*/
-		//	document.querySelector('#content').innerHTML=guest_main_content();
+			//	document.querySelector('#content').innerHTML=guest_main_content();
 			document.querySelector('#menu_guest_home').click();
 
 		}); //load event end

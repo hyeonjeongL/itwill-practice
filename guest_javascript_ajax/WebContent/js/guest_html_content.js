@@ -111,7 +111,7 @@ function guest_modify_form_content(guest) {
 					</tbody>
 				</table> <!-- modify Form  -->
 				<form id=guest_modify_form name="f" method="post">
-					<input type="hidden" name="guest_no" value="3">
+					<input type="hidden" name="guest_no" value="${guest.guest_no}">
 					<table border="0" cellpadding="0" cellspacing="1" width="590"
 						bgcolor="BBBBBB">
 						<tbody>
@@ -124,25 +124,25 @@ function guest_modify_form_content(guest) {
 								<td width="100" align="center" bgcolor="E6ECDE" height="22">이름</td>
 								<td align="left" width="490" bgcolor="ffffff"
 									style="padding-left: 10px"><input type="text"
-									style="width: 150" name="guest_name" value=${guest.guest_name}></td>
+									style="width: 150" name="guest_name" value="${guest.guest_name}"></td>
 							</tr>
 							<tr>
 								<td width="100" align="center" bgcolor="E6ECDE" height="22">홈페이지</td>
 								<td align="left" width="490" bgcolor="ffffff"
 									style="padding-left: 10px"><input type="text"
-									style="width: 150" name="guest_homepage" value=${guest.guest_homepage}></td>
+									style="width: 150" name="guest_homepage" value="${guest.guest_homepage}"></td>
 							</tr>
 							<tr>
 								<td width="100" align="center" bgcolor="E6ECDE" height="22">이메일</td>
 								<td align="left" width="490" bgcolor="ffffff"
 									style="padding-left: 10px"><input type="text"
-									style="width: 240" name="guest_email" value=${guest.guest_email}></td>
+									style="width: 240" name="guest_email" value="${guest.guest_email}"></td>
 							</tr>
 							<tr>
 								<td width="100" align="center" bgcolor="E6ECDE" height="22">제목</td>
 								<td align="left" width="490" bgcolor="ffffff"
 									style="padding-left: 10px"><input type="text"
-									style="width: 240" name="guest_title" value=${guest.guest_title}></td>
+									style="width: 240" name="guest_title" value="${guest.guest_title}"></td>
 							</tr>
 							<tr>
 								<td width="100" align="center" bgcolor="E6ECDE" height="22">내용</td>
@@ -181,7 +181,7 @@ function guest_view_content(guest) {
 								</tr>
 							</tbody></table> <!-- view Form  -->
 							<form id=guest_view name="f" method="post">
-								<input type="hidden" name="guest_no" value="3">
+								<input type="hidden" name="guest_no" value="${guest.guest_no}">
 								<table border="0" cellpadding="0" cellspacing="1" width="590" bgcolor="BBBBBB">
 									<tbody><tr>
 										<td width="100" align="center" bgcolor="E6ECDE" height="22">번호</td>

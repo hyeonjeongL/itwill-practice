@@ -1,17 +1,17 @@
 table {
-	
 	width: 100%;
 	/*
 	height: 100%;
 	*/
 }
+
 form {
-	margin:10px;
+	margin: 10px;
 	margin-right: 0px;
 	text-align: center;
 }
+
 A:link {
-	
 	color: #333333;
 	/*
 	font-family: "돋움", "굴림";
@@ -19,6 +19,7 @@ A:link {
 	font-size: 12px;
 	text-decoration: none;
 }
+
 A:visited {
 	color: #333333;
 	/*
@@ -27,6 +28,7 @@ A:visited {
 	font-size: 12px;
 	text-decoration: none;
 }
+
 A:active {
 	color: #333333;
 	/*
@@ -35,6 +37,7 @@ A:active {
 	font-size: 12px;
 	text-decoration: none;
 }
+
 A:hover {
 	color: #BEA12C;
 	/*
@@ -44,8 +47,6 @@ A:hover {
 	/*
 	text-decoration: underline;
 	*/
-	
-	
 }
 
 a.user:link {
@@ -58,6 +59,7 @@ a.user:link {
 	text-decoration: underline;
 	*/
 }
+
 a.user:visited {
 	color: #333333;
 	/*
@@ -68,6 +70,7 @@ a.user:visited {
 	text-decoration: underline;
 	*/
 }
+
 a.user:active {
 	color: #333333;
 	/*
@@ -78,6 +81,7 @@ a.user:active {
 	text-decoration: underline;
 	*/
 }
+
 a.user:hover {
 	color: #3740cac4;
 	/*
@@ -87,8 +91,8 @@ a.user:hover {
 	/*
 	text-decoration: underline;
 	*/
-	
 }
+
 input {
 	/*
 	font-family: 돋움;
@@ -96,6 +100,7 @@ input {
 	font-size: 8pt;
 	color: #333333;
 }
+
 textarea {
 	/*
 	font-family: 돋움;
@@ -103,6 +108,7 @@ textarea {
 	font-size: 8pt;
 	color: #333333;
 }
+
 td {
 	/*
 	font-family: 돋움;
@@ -111,6 +117,7 @@ td {
 	color: #333333;
 	line-height: 18px;
 }
+
 .title {
 	font-family: 돋움;
 	font-size: 12pt;
@@ -126,6 +133,7 @@ td {
 	font-size: 8pt;
 	color: #333333;
 }
+
 .textarea {
 	/*
 	font-family: 돋움;
@@ -133,6 +141,7 @@ td {
 	font-size: 8pt;
 	color: #333333;
 }
+
 .password {
 	/*
 	font-family: 돋움;
@@ -140,6 +149,7 @@ td {
 	font-size: 8pt;
 	color: #333333;
 }
+
 .file {
 	/*
 	font-family: 돋움;
@@ -147,6 +157,7 @@ td {
 	font-size: 8pt;
 	color: #333333;
 }
+
 .select {
 	/*
 	font-family: 돋움;
@@ -155,3 +166,11 @@ td {
 	color: #333333;
 }
 
+#loading {
+	border: 1px solid #000;
+	background: grey;
+	padding : 20px;
+	margin:100px 0 0 300px;
+	position:absolute;
+	display:none;
+}

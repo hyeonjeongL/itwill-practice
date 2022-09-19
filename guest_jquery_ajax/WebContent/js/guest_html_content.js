@@ -158,7 +158,7 @@ function guest_view_content(guest) {
 								</tr>
 							</tbody></table> <!-- view Form  -->
 							<form name="f" method="post">
-								<input type="hidden" name="guest_no" value="3">
+								<input type="hidden" name="guest_no" value="${guest.guest_no}">
 								<table border="0" cellpadding="0" cellspacing="1" width="590" bgcolor="BBBBBB">
 									<tbody><tr>
 										<td width="100" align="center" bgcolor="E6ECDE" height="22">번호</td>
