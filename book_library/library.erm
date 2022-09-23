@@ -135,7 +135,7 @@
 			</connections>
 			<display>false</display>
 			<creation_date>2022-09-17 18:16:37</creation_date>
-			<updated_date>2022-09-21 17:48:49</updated_date>
+			<updated_date>2022-09-23 17:49:30</updated_date>
 			<model_property>
 				<name>프로젝트명</name>
 				<value></value>
@@ -3903,12 +3903,12 @@
 		</table>
 		<table>
 			<id>10</id>
-			<height>275</height>
+			<height>317</height>
 			<width>261</width>
 				<font_name>맑은 고딕</font_name>
 				<font_size>9</font_size>
-			<x>420</x>
-			<y>96</y>
+			<x>465</x>
+			<y>75</y>
 			<color>
 				<r>128</r>
 				<g>128</g>
@@ -4375,6 +4375,37 @@
 						<decimal_size>0</decimal_size>
 					</sequence>
 				</normal_column>
+			</columns>
+			<indexes>
+			</indexes>
+			<complex_unique_key_list>
+			</complex_unique_key_list>
+			<table_properties>
+				<schema></schema>
+			</table_properties>
+		</table>
+		<table>
+			<id>11</id>
+			<height>75</height>
+			<width>120</width>
+				<font_name>맑은 고딕</font_name>
+				<font_size>9</font_size>
+			<x>871</x>
+			<y>288</y>
+			<color>
+				<r>128</r>
+				<g>128</g>
+				<b>192</b>
+			</color>
+			<connections>
+			</connections>
+			<physical_name>NEW_TABLE</physical_name>
+			<logical_name>새 테이블</logical_name>
+			<description></description>
+			<constraint></constraint>
+			<primary_key_name></primary_key_name>
+			<option></option>
+			<columns>
 			</columns>
 			<indexes>
 			</indexes>
