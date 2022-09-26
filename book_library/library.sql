@@ -49,18 +49,18 @@ CREATE SEQUENCE SEQ_Seat_seat_no INCREMENT BY 1 START WITH 1;
 CREATE TABLE Book
 (
 	book_no number NOT NULL UNIQUE,
-	book_title number NOT NULL,
-	book_author varchar2(100),
-	book_publisher varchar2(100),
-	book_summary varchar2(500),
-	book_publish_date date,
+	isbn number NOT NULL,
+	book_title varchar2(500 char) NOT NULL,
+	book_author varchar2(500 char),
+	book_publisher varchar2(500),
+	book_summary varchar2(600),
+	book_publish_date varchar2(200 char),
 	book_input_date date,
 	book_image varchar2(500),
+	book_image_src varchar2(500 char),
 	book_page number,
 	book_qty number,
 	book_res_cnt number,
-	rental_status number,
-	res_status number,
 	book_rental_cnt number,
 	category_no number NOT NULL,
 	PRIMARY KEY (book_no)
@@ -117,8 +117,9 @@ CREATE TABLE Rental
 	rental_no number NOT NULL,
 	rental_date date,
 	return_date date,
+	rental_status number NOT NULL,
 	book_no number NOT NULL,
-	user_id varchar2(100),
+	user_id varchar2(100) NOT NULL,
 	PRIMARY KEY (rental_no)
 );
 
@@ -145,6 +146,7 @@ CREATE TABLE Reservation
 (
 	res_no number NOT NULL,
 	res_date date,
+	res_status number,
 	book_no number NOT NULL,
 	user_id varchar2(100) NOT NULL UNIQUE,
 	PRIMARY KEY (res_no)

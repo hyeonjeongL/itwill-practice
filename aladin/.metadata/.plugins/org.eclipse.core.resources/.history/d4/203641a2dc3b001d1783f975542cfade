@@ -1,0 +1,34 @@
+package com.cra.aladin.utils;
+
+import java.io.IOException;
+import java.util.List;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+
+import com.cra.aladin.dto.BookDto;
+
+public class AladinPage {
+	String gubun = "";
+	List<String> urlList = null;
+	public AladinPage() {
+		
+	}
+	public AladinPage(String gubun, List<String> urlList) {
+		this.gubun = gubun;
+		this.urlList = urlList;
+	}
+	
+	public List<BookDto> parsingPage() {
+		for (String url : urlList) {
+			try {
+				Document doc = Jsoup.connect(url).get();
+				
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		return null;
+	}
+	
+}

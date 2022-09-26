@@ -1,0 +1,6 @@
+package com.cra.aladin.dao;
+@Mapper
+@Repository
+public interface BookDao {
+
+}

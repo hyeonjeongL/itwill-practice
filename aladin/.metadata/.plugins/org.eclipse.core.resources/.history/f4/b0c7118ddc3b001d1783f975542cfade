@@ -1,0 +1,25 @@
+package com.cra.aladin.utils;
+
+import java.util.List;
+
+import com.cra.aladin.dto.BookDto;
+
+public class AladinPage {
+	String gubun = "";
+	List<String> urlList = null;
+	public AladinPage() {
+		
+	}
+	public AladinPage(String gubun, List<String> urlList) {
+		this.gubun = gubun;
+		this.urlList = urlList;
+	}
+	
+	public List<BookDto> parsingPage() {
+		for (String string : urlList) {
+			
+		}
+		return null;
+	}
+	
+}

@@ -1,0 +1,38 @@
+package com.cra.aladin;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+import org.springframework.boot.ApplicationArguments;
+import org.springframework.boot.ApplicationRunner;
+import org.springframework.stereotype.Component;
+
+@Component
+public class AladinCrawlerApplication implements ApplicationRunner{
+
+	@Override
+	public void run(ApplicationArguments args) throws Exception {
+		Document doc = Jsoup.connect("https://www.aladin.co.kr/shop/common/wnew.aspx?NewType=New&BranchType=1&CID=656&ViewRowsCount=50").get();
+		Elements bookDiv = doc.select("div.ss_book_box");
+		for (Element el : bookDiv) {
+			String img = el.select("img.front_cover").attr("src");
+			String title = el.select(" div.ss_book_list >ul > li > a.bo3").text(); 
+			String info = el.select("div.ss_book_list >ul > li:nth-child(2)").text().replaceAll("\\s+", "");
+			
+			info.split("|");
+			String desc = el.select("p.ss_promotion").text();
+		}
+		
+		System.out.println(doc);
+	}
+	
+	public String splitData(String data) {
+		String writer = data.split("|")[0];
+		for (String dat: data.split("|")) {
+			
+		}
+		return "";
+	}
+
+}

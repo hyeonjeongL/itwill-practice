@@ -1,0 +1,20 @@
+package com.cra.aladin.utils;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class ParsingData {
+	
+	public static Map<String, String> getParsingData() {
+		Map<String, String> data = new HashMap<>();
+		data.put("가정/요리/뷰티", "https://www.aladin.co.kr/shop/common/wnew.aspx?NewType=New&BranchType=1&CID=1230");
+		data.put("건강/취미/레저", "https://www.aladin.co.kr/shop/common/wnew.aspx?NewType=New&BranchType=1&CID=55890");
+		data.put("경제경영", "https://www.aladin.co.kr/shop/common/wnew.aspx?NewType=New&BranchType=1&CID=170");
+		data.put("고", "https://www.aladin.co.kr/shop/common/wnew.aspx?NewType=New&BranchType=1&CID=2105");
+		data.put(null, null);
+		data.put(null, null);
+		
+		return data;
+	}
+
+}

@@ -1,0 +1,13 @@
+package com.cra.aladin.dto;
+
+public class BookDto {
+	String gubun;
+	String title;
+	String writer;
+	String publisher;
+	String image;
+	String image_src;
+	String desc;
+	String giho;
+	String pubYear;
+}

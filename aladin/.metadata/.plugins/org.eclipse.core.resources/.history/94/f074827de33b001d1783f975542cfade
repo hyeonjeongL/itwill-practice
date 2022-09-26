@@ -1,0 +1,42 @@
+package com.cra.aladin.utils;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class ParsingData {
+	
+	public static Map<String, String> getParsingData() {
+		Map<String, String> data = new HashMap<>();
+		data.put("000(가정/요리/뷰티)", "https://www.aladin.co.kr/shop/common/wnew.aspx?NewType=New&BranchType=1&CID=1230&ViewRowsCount=50");
+		data.put("100(건강/취미/레저)", "https://www.aladin.co.kr/shop/common/wnew.aspx?NewType=New&BranchType=1&CID=55890&ViewRowsCount=50");
+		data.put("200(경제경영)", "https://www.aladin.co.kr/shop/common/wnew.aspx?NewType=New&BranchType=1&CID=170&ViewRowsCount=50");
+		data.put("300(고전)", "https://www.aladin.co.kr/shop/common/wnew.aspx?NewType=New&BranchType=1&CID=2105&ViewRowsCount=50");
+		data.put("400(과학)", "https://www.aladin.co.kr/shop/common/wnew.aspx?NewType=New&BranchType=1&CID=987&ViewRowsCount=50");
+		data.put("500(대학교제/전문서적)", "https://www.aladin.co.kr/shop/common/wnew.aspx?NewType=New&BranchType=1&CID=8257&ViewRowsCount=50");
+		data.put("600(만화)", "https://www.aladin.co.kr/shop/common/wnew.aspx?NewType=New&BranchType=1&CID=2551&ViewRowsCount=50");
+		data.put("700(사회과학)", "https://www.aladin.co.kr/shop/common/wnew.aspx?NewType=New&BranchType=1&CID=798&ViewRowsCount=50");
+		data.put("800(소설/시/희곡)", "https://www.aladin.co.kr/shop/common/wnew.aspx?NewType=New&BranchType=1&CID=1&ViewRowsCount=50");
+		data.put("900(수험서/자격증)", "https://www.aladin.co.kr/shop/common/wnew.aspx?NewType=New&BranchType=1&CID=1383&ViewRowsCount=50");
+		data.put("1000(어린이)", "https://www.aladin.co.kr/shop/common/wnew.aspx?NewType=New&BranchType=1&CID=1108&ViewRowsCount=50");
+		
+		return data;
+	}
+
+	public static List<String> makeUrl(String url, int totalCnt) {
+		List<String> urlList = new ArrayList<>();
+		int pageSize = 50;
+		int pageCnt = (totalCnt/pageSize);
+		int mod = (totalCnt % pageSize);
+		if(mod > 0) pageCnt = pageCnt+1;
+		
+		for (int i = 1; i <= pageCnt; i++) {
+			url = url+"&page="+i;
+			urlList.add(url);
+		}
+
+		return urlList;
+	}
+
+}

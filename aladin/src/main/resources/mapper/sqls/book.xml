@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cra.aladin.dao.BookDao">
+	<insert id="insertBookData" parameterType="book">
+	<![CDATA[
+		INSERT INTO BOOK(
+			BOOK_NO,
+			ISBN, 
+			CATEGORY_NO, 
+			BOOK_TITLE, 
+			BOOK_SUMMARY, 
+			BOOK_AUTHOR, 
+			BOOK_PUBLISHER, 
+			BOOK_IMAGE, 
+			BOOK_IMAGE_SRC, 
+			BOOK_PUBLISH_DATE, 
+			BOOK_PAGE,
+			BOOK_INPUT_DATE
+		) VALUES (
+			SEQ_BOOK_BOOK_NO.nextval,
+			#{isbn},
+			#{category_no},
+			#{book_title},
+			#{book_summary},
+			#{book_author},
+			#{book_publisher},
+			#{book_image},
+			#{book_image_src},
+			#{book_publish_date},
+			#{book_page},
+			SYSDATE
+		)
+	]]>
+	</insert>
+</mapper>

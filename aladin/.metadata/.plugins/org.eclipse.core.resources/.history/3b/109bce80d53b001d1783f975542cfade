@@ -1,0 +1,41 @@
+package com.cra.aladin;
+
+import java.util.Map;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+import org.springframework.boot.ApplicationArguments;
+import org.springframework.boot.ApplicationRunner;
+import org.springframework.stereotype.Component;
+
+import com.cra.aladin.utils.ParsingData;
+
+@Component
+public class AladinCrawlerApplication implements ApplicationRunner{
+
+	@Override
+	public void run(ApplicationArguments args) throws Exception {
+		Map<String, String> data = ParsingData.getParsingData();
+		
+		Document doc = Jsoup.connect("https://www.aladin.co.kr/shop/common/wnew.aspx?NewType=New&BranchType=1&CID=656&ViewRowsCount=50").get();
+		int totalCnt = Integer.parseInt(doc.select("div.search_t_g").text().replaceAll("\\D+", ""));
+		Elements bookDiv = doc.select("div.ss_book_box");
+		for (Element el : bookDiv) {
+			String img = el.select("img.front_cover").attr("src");
+			String title = el.select(" div.ss_book_list >ul > li > a.bo3").text(); 
+			String info = el.select("div.ss_book_list >ul > li:nth-child(2)").text().replaceAll("\\s+", "");
+			if(!info.contains("|")) {
+				info = el.select("div.ss_book_list >ul > li:nth-child(3)").text().replaceAll("\\s+", "");
+			}
+			String writer = info.split("\\|")[0];
+			String publisher = info.split("\\|")[1];
+			String pubYear = info.split("\\|")[2];
+			String desc = el.select("p.ss_promotion").text();
+		}
+	
+	}
+	
+
+}

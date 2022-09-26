@@ -1,0 +1,5 @@
+package com.cra.aladin.service;
+
+public class BookService {
+
+}

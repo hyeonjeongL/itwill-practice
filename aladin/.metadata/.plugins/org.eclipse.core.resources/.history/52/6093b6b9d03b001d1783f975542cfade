@@ -1,0 +1,5 @@
+package com.cra.aladin.dto;
+
+public class BookDto {
+
+}

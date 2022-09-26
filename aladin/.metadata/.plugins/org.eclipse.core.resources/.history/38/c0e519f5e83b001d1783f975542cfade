@@ -1,0 +1,66 @@
+package com.cra.aladin.utils;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
+import com.cra.aladin.dto.BookDto;
+
+public class AladinPage {
+	String gubun = "";
+	List<String> urlList = null;
+	public AladinPage() {
+		
+	}
+	public AladinPage(String gubun, List<String> urlList) {
+		this.gubun = gubun;
+		this.urlList = urlList;
+	}
+	
+	public List<BookDto> parsingPage() {
+		List<BookDto>  bookList = new ArrayList<>();
+		System.out.println(urlList.size());
+		for (String url : urlList) {
+			System.out.println(url);
+			try {
+				Document doc = Jsoup.connect(url).get();
+				Elements bookDiv = doc.select("div.ss_book_box");
+				for (Element el : bookDiv) {
+					String title = el.select(" div.ss_book_list >ul > li > a.bo3").text(); 
+					String img = el.select("img.front_cover").attr("src");
+					String imgSrc = title+".img";
+					String info = el.select("div.ss_book_list >ul > li:nth-child(2)").text().replaceAll("\\s+", "");
+					if(!info.contains("|")) {
+						info = el.select("div.ss_book_list >ul > li:nth-child(3)").text().replaceAll("\\s+", "");
+					}
+					String writer = info.split("\\|")[0];
+					String publisher = info.split("\\|")[1];
+					String pubYear = info.split("\\|")[2];
+					String desc = el.select("p.ss_promotion").text();
+					String giho = makeGiho(gubun, writer);
+					BookDto bookData = new BookDto(gubun, title, writer, publisher, img, imgSrc, desc, giho, pubYear);
+					bookList.add(bookData);
+					
+				}
+			} catch (IOException e) {
+				System.out.println(e.getStackTrace());
+			}
+			System.out.println(bookList.size());
+		}
+		return bookList;
+	}
+	private String makeGiho(String gubun, String writer) {
+		int number = Integer.parseInt( gubun.replaceAll("\\D+", ""));
+		int rndNum = number + ((int) (Math.random() * 99) + 1);
+		String writerFirst = Character.toString(writer.charAt(0));
+		String rnd =String.valueOf((int) (Math.random() * 99) + 1);
+		String giho = rndNum+ "-"+writerFirst+rnd;
+		return giho;
+	}
+	
+}
