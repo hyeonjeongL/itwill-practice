@@ -1,0 +1,13 @@
+package com.example.demo;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication(scanBasePackages = {"찾지 못하는 패키지루트"})
+public class CheckimApplication {
+	
+	public static void main(String[] args) {
+		SpringApplication.run(CheckimApplication.class, args);
+	}
+
+}

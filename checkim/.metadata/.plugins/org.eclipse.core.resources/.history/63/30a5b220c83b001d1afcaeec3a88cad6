@@ -1,0 +1,22 @@
+server:
+  port: 8080
+
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+  datasource:
+    hikari:
+      data-source-class-name: com.mysql.cj.jdbc.Driver
+      connection-init-sql: SELECT 1
+      minimum-idle: 1
+      idle-timeout: 300000
+      maximum-pool-size: 31
+      max-lifetime: 540000
+      username: prj
+      password: prj!@#
+    use: true
+    url: jdbc:mysql://132.226.231.171:3306/prj_db?autoReconnect=true&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true
+    username: prj
+    password: prj!@#

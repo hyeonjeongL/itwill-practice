@@ -1,6 +1,7 @@
 
 /* Drop Tables */
 
+DROP TABLE Books_detail CASCADE CONSTRAINTS;
 DROP TABLE favorite CASCADE CONSTRAINTS;
 DROP TABLE Rental CASCADE CONSTRAINTS;
 DROP TABLE Reservation CASCADE CONSTRAINTS;
@@ -31,9 +32,21 @@ CREATE TABLE Book
 	book_page number,
 	book_qty number,
 	book_res_count number,
-	book_groupno number,
+	rental_status number,
+	res_status number,
 	category_no number NOT NULL,
 	PRIMARY KEY (book_no)
+);
+
+
+CREATE TABLE Books_detail
+(
+	books_no number NOT NULL,
+	isbn_no number NOT NULL,
+	rental_status number NOT NULL,
+	res_status number NOT NULL,
+	book_no number NOT NULL UNIQUE,
+	PRIMARY KEY (books_no)
 );
 
 
@@ -88,7 +101,6 @@ CREATE TABLE Rental
 	rental_date date,
 	return_date date,
 	rental_count number,
-	rental_stop_term number,
 	user_no number NOT NULL,
 	book_no number NOT NULL,
 	PRIMARY KEY (rental_no)
@@ -157,12 +169,20 @@ CREATE TABLE User_info
 	user_address varchar2(50),
 	user_qr varchar2(50),
 	category_no number NOT NULL,
+	user_rental_stop_term number,
+	user_rental_status number,
 	PRIMARY KEY (user_no)
 );
 
 
 
 /* Create Foreign Keys */
+
+ALTER TABLE Books_detail
+	ADD FOREIGN KEY (book_no)
+	REFERENCES Book (book_no)
+;
+
 
 ALTER TABLE favorite
 	ADD FOREIGN KEY (book_no)
