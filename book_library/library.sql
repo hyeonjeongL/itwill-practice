@@ -1,7 +1,6 @@
 
 /* Drop Tables */
 
-DROP TABLE Books_detail CASCADE CONSTRAINTS;
 DROP TABLE favorite CASCADE CONSTRAINTS;
 DROP TABLE Rental CASCADE CONSTRAINTS;
 DROP TABLE Reservation CASCADE CONSTRAINTS;
@@ -12,8 +11,36 @@ DROP TABLE Seat_reservation CASCADE CONSTRAINTS;
 DROP TABLE User_info CASCADE CONSTRAINTS;
 DROP TABLE Book_category CASCADE CONSTRAINTS;
 DROP TABLE Notice CASCADE CONSTRAINTS;
-DROP TABLE Seat CASCADE CONSTRAINTS;
+DROP TABLE seat CASCADE CONSTRAINTS;
 
+
+
+/* Drop Sequences */
+
+DROP SEQUENCE SEQ_Books_detail_books_no;
+DROP SEQUENCE SEQ_Book_book_no;
+DROP SEQUENCE SEQ_Book_club_club_no;
+DROP SEQUENCE SEQ_favorite_favorite_no;
+DROP SEQUENCE SEQ_Notice_notice_no;
+DROP SEQUENCE SEQ_Request_board_board_no;
+DROP SEQUENCE SEQ_Reservation_res_no;
+DROP SEQUENCE SEQ_Seat_reservation_seat_res_no;
+DROP SEQUENCE SEQ_Seat_seat_no;
+
+
+
+
+/* Create Sequences */
+
+CREATE SEQUENCE SEQ_Books_detail_books_no INCREMENT BY 1 START WITH 1;
+CREATE SEQUENCE SEQ_Book_book_no INCREMENT BY 1 START WITH 1;
+CREATE SEQUENCE SEQ_Book_club_club_no INCREMENT BY 1 START WITH 1;
+CREATE SEQUENCE SEQ_favorite_favorite_no INCREMENT BY 1 START WITH 1;
+CREATE SEQUENCE SEQ_Notice_notice_no INCREMENT BY 1 START WITH 1;
+CREATE SEQUENCE SEQ_Request_board_board_no INCREMENT BY 1 START WITH 1;
+CREATE SEQUENCE SEQ_Reservation_res_no INCREMENT BY 1 START WITH 1;
+CREATE SEQUENCE SEQ_Seat_reservation_seat_res_no INCREMENT BY 1 START WITH 1;
+CREATE SEQUENCE SEQ_Seat_seat_no INCREMENT BY 1 START WITH 1;
 
 
 
@@ -31,22 +58,12 @@ CREATE TABLE Book
 	book_image varchar2(500),
 	book_page number,
 	book_qty number,
-	book_res_count number,
+	book_res_cnt number,
 	rental_status number,
 	res_status number,
+	book_rental_cnt number,
 	category_no number NOT NULL,
 	PRIMARY KEY (book_no)
-);
-
-
-CREATE TABLE Books_detail
-(
-	books_no number NOT NULL,
-	isbn_no number NOT NULL,
-	rental_status number NOT NULL,
-	res_status number NOT NULL,
-	book_no number NOT NULL UNIQUE,
-	PRIMARY KEY (books_no)
 );
 
 
@@ -69,7 +86,7 @@ CREATE TABLE Book_club
 	club_place varchar2(100),
 	club_content varchar2(500),
 	category_no number NOT NULL,
-	user_no number NOT NULL,
+	user_id varchar2(100) NOT NULL UNIQUE,
 	PRIMARY KEY (club_no)
 );
 
@@ -77,8 +94,8 @@ CREATE TABLE Book_club
 CREATE TABLE favorite
 (
 	favorite_no number NOT NULL,
-	user_no number NOT NULL,
 	book_no number NOT NULL,
+	user_id varchar2(100) NOT NULL UNIQUE,
 	PRIMARY KEY (favorite_no)
 );
 
@@ -100,9 +117,8 @@ CREATE TABLE Rental
 	rental_no number NOT NULL,
 	rental_date date,
 	return_date date,
-	rental_count number,
-	user_no number NOT NULL,
 	book_no number NOT NULL,
+	user_id varchar2(100),
 	PRIMARY KEY (rental_no)
 );
 
@@ -120,7 +136,7 @@ CREATE TABLE Request_board
 	board_step number,
 	board_groupno number,
 	category_no number NOT NULL,
-	user_no number NOT NULL,
+	user_id varchar2(100) NOT NULL UNIQUE,
 	PRIMARY KEY (board_no)
 );
 
@@ -129,16 +145,16 @@ CREATE TABLE Reservation
 (
 	res_no number NOT NULL,
 	res_date date,
-	user_no number NOT NULL,
 	book_no number NOT NULL,
+	user_id varchar2(100) NOT NULL UNIQUE,
 	PRIMARY KEY (res_no)
 );
 
 
-CREATE TABLE Seat
+CREATE TABLE seat
 (
-	seat_no number NOT NULL,
-	seat_count number,
+	seat_no varchar2(50 char) NOT NULL,
+	seat_status number DEFAULT 0,
 	PRIMARY KEY (seat_no)
 );
 
@@ -147,42 +163,35 @@ CREATE TABLE Seat_reservation
 (
 	seat_res_no number NOT NULL,
 	seat_date date,
-	seat_status varchar2(50),
 	seat_start_time varchar2(50),
 	seat_end_time varchar2(50),
-	seat_no number NOT NULL,
-	user_no number NOT NULL,
+	user_id varchar2(100) NOT NULL UNIQUE,
+	seat_no varchar2(50 char) NOT NULL,
 	PRIMARY KEY (seat_res_no)
 );
 
 
 CREATE TABLE User_info
 (
-	user_no number NOT NULL,
-	user_name varchar2(50),
 	user_id varchar2(100) NOT NULL,
 	user_password varchar2(20),
+	user_name varchar2(50) NOT NULL,
 	user_email varchar2(100),
 	user_birth date,
 	user_gender varchar2(50),
 	user_phone varchar2(30),
 	user_address varchar2(50),
 	user_qr varchar2(50),
-	category_no number NOT NULL,
-	user_rental_stop_term number,
 	user_rental_status number,
-	PRIMARY KEY (user_no)
+	user_book_cnt_limit number,
+	user_weight number,
+	category_no number NOT NULL,
+	PRIMARY KEY (user_id)
 );
 
 
 
 /* Create Foreign Keys */
-
-ALTER TABLE Books_detail
-	ADD FOREIGN KEY (book_no)
-	REFERENCES Book (book_no)
-;
-
 
 ALTER TABLE favorite
 	ADD FOREIGN KEY (book_no)
@@ -228,43 +237,43 @@ ALTER TABLE User_info
 
 ALTER TABLE Seat_reservation
 	ADD FOREIGN KEY (seat_no)
-	REFERENCES Seat (seat_no)
+	REFERENCES seat (seat_no)
 ;
 
 
 ALTER TABLE Book_club
-	ADD FOREIGN KEY (user_no)
-	REFERENCES User_info (user_no)
+	ADD FOREIGN KEY (user_id)
+	REFERENCES User_info (user_id)
 ;
 
 
 ALTER TABLE favorite
-	ADD FOREIGN KEY (user_no)
-	REFERENCES User_info (user_no)
+	ADD FOREIGN KEY (user_id)
+	REFERENCES User_info (user_id)
 ;
 
 
 ALTER TABLE Rental
-	ADD FOREIGN KEY (user_no)
-	REFERENCES User_info (user_no)
+	ADD FOREIGN KEY (user_id)
+	REFERENCES User_info (user_id)
 ;
 
 
 ALTER TABLE Request_board
-	ADD FOREIGN KEY (user_no)
-	REFERENCES User_info (user_no)
+	ADD FOREIGN KEY (user_id)
+	REFERENCES User_info (user_id)
 ;
 
 
 ALTER TABLE Reservation
-	ADD FOREIGN KEY (user_no)
-	REFERENCES User_info (user_no)
+	ADD FOREIGN KEY (user_id)
+	REFERENCES User_info (user_id)
 ;
 
 
 ALTER TABLE Seat_reservation
-	ADD FOREIGN KEY (user_no)
-	REFERENCES User_info (user_no)
+	ADD FOREIGN KEY (user_id)
+	REFERENCES User_info (user_id)
 ;
 
 
