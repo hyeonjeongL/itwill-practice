@@ -1,0 +1,7 @@
+package com.cra.aladin.utils;
+
+public class AladinPage {
+	public AladinPage() {
+		
+	}
+}

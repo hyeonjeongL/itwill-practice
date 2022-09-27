@@ -1,0 +1,13 @@
+package com.cra.aladin.utils;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class ParsingData {
+	
+	public static Map<String, String> getParsingData() {
+		Map<String, String> data = new HashMap<>();
+		return data;
+	}
+
+}

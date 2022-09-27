@@ -1,0 +1,16 @@
+package com.cra.aladin.utils;
+
+import java.util.List;
+
+public class AladinPage {
+	String gubun = "";
+	List<String> urlList = null;
+	public AladinPage() {
+		
+	}
+	public AladinPage(String gubun, List<String> urlList) {
+		this.gubun = gubun;
+		this.urlList = urlList;
+	}
+	
+}
