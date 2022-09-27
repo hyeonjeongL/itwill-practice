@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
 <!doctype html>
@@ -12,7 +12,7 @@
 	<meta property="og:description" content="" />
 		<meta property="og:image" content="https://library.korea.ac.kr/wp-content/uploads/2021/11/kulib_logo.png" />
 	<link rel="profile" href="https://gmpg.org/xfn/11" />
-	<title>고려대학교 도서관</title>
+	<title>도서관</title>
 	<link rel="alternate" hreflang="ko" href="https://library.korea.ac.kr" />
 <link rel="alternate" hreflang="en" href="https://library.korea.ac.kr/?lang=en" />
 
