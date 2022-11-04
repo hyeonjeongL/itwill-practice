@@ -1,6 +1,0 @@
-package com.example.demo.controller;
-@CrossOrigin(origins = "*")
-@RestController
-public class BookController {
-
-}
